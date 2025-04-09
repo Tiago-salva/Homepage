@@ -3,6 +3,11 @@
 :root {
     --blue: rgb(8, 139, 171);
     --grey: rgb(37, 37, 37);
+    --red: rgb(158, 28, 28);
+    --purple: rgb(124, 117, 202);
+    --pink: rgb(195, 99, 180);
+    --orange: rgb(216, 143, 57);
+    --green: rgb(94, 143, 77);
 }
 
 * {
@@ -19,13 +24,11 @@ body {
 
 .background-form {
     position: absolute;
-    top: -700px;
-    left: -500px;
-    height: 1000px;
-    width: 1000px;
+    top: -220px;
+    height: 500px;
+    width: 100%;
     background-color: var(--blue);
-    z-index: 0;
-    transform: rotate(155deg);
+    transform: skewY(345deg);
 }
 
 /* Header */
@@ -34,6 +37,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     padding: 10px 20px;
     gap: 20px;
@@ -42,7 +46,7 @@ body {
 
 .header-img {
     height: 350px;
-    width: auto;
+    width: min(100% - 20px, 350px);
     display: flex;
     align-items: flex-end;
     margin: 10px 30px;
@@ -125,9 +129,37 @@ body {
 
 .project-img {
     width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-} 
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.projects > .project:nth-child(1) > .project-img {
+    background-color: var(--red);    
+}
+
+.projects > .project:nth-child(2) > .project-img,
+.projects > .project:nth-child(5) > .project-img {
+    background-color: var(--purple);    
+}
+
+.projects > .project:nth-child(3) > .project-img {
+    background-color: var(--pink);    
+}
+
+.projects > .project:nth-child(4) > .project-img {
+    background-color: var(--orange);    
+}
+
+.projects > .project:nth-child(6) > .project-img {
+    background-color: var(--green);    
+}
+
+.project-img > p {
+    font-size: 2rem;
+}
 
 .project-information {
     position: relative;
@@ -160,15 +192,19 @@ body {
 }
 
 /* Footer */
-
-.footer {
+footer {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--blue);
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.footer-text-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 50px;
-    background-color: var(--blue);
-    padding: 20px;
     color: white;
 }
 
@@ -189,8 +225,19 @@ body {
     font-size: 0.9rem;
 }
 
-.footer-mobile-number {
-    margin: 20px 0 5px 0;
+.footer-adress-2 {
+    margin-bottom: 20px;
+}
+
+.footer-mobile-number,
+.footer-mail {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.footer-mobile-number > img,
+.footer-mail > img {
+    display: none;
 }
 
 .footer-icons-container {
@@ -217,9 +264,129 @@ body {
 }
 
 /* Mediaqueries */
-@media (min-width: 480px) {
-    body {
-        background-color: aqua;
+@media (min-width: 500px) {
+    /* Header */
+    .about-me-text {
+        padding: 0 40px;
+    }
+
+    /* Main */
+    .main {
+        padding: 20px 70px;
+    }
+
+    .main-title {
+        text-align: left;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+        gap: 50px;
+    }
+
+    .project-icons-container {
+        gap: 15px;
+    }
+
+    .project-icons-container> .icon> img {
+        width: 23px;
+    }
+
+    .project-description {
+        width: 80%;
+    }
+}
+
+@media (min-width: 800px) {
+    .background-form {
+        height: 600px;
+        top: -220px;
+    }
+
+    /* Header */
+    .header {
+        display: block;
+    }
+
+    .header-img {
+        float: left;
+        margin-top: 40px;
+        height: 400px;
+    }
+
+    .header-title {
+        position: absolute;
+        top: 80px;
+        right: 160px;
+        font-size: 2.5rem;
+    }
+
+    .about-me{
+        display: block;
+        background-color: white;
+        width: 600px;
+        margin: 130px auto auto auto;
+        padding: 50px 20px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    .about-me-title {
+        font-size: 2.5rem;
+    }
+
+    .about-me-text {
+        font-size: 1.3rem;
+        margin-top: 20px;
+    }
+
+    .header-icons-container {
+        display: none;
+    }
+
+    /* Footer */
+    footer {
+        padding: 40px 30px;
+    }
+
+    .footer-text-container {
+        height: fit-content;
+        margin: auto 0;
+        gap: 30px;
+    }
+
+    .footer-title {
+        text-align: left;
+    }
+
+    .contact-me-text {
+        width: 80%;
+    }
+
+    .footer-information {
+        font-size: 1rem;
+    }
+
+    .footer-mobile-number,
+    .footer-mail {
+        gap: 10px;
+    }
+
+    .footer-mobile-number> img,
+    .footer-mail> img {
+        display: block;
+        width: 20px;
+    }
+
+    .footer-icons-container {
+        justify-content: flex-start;
+        margin-bottom: 0;
+    }
+
+    .footer-img {
+        position: static;
+        width: 40%;
+        height: 450px;
     }
 }
 
